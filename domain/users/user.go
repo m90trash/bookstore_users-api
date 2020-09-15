@@ -2,7 +2,8 @@ package users
 
 type User struct {
 	Id         int    `json:"id"`
-	FullName   string `json:"full_name"`
+	FirstName  string `json:"first_name"`
+	LastName   string `json:"last_name"`
 	Email      string `json:"email"`
 	CreateDate string `json:"create_date"`
 }
