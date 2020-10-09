@@ -2,6 +2,7 @@ package users
 
 import (
 	"fmt"
+	"github.com/m90trash/bookstore_users-api/datasources/mysql/users_db"
 	"github.com/m90trash/bookstore_users-api/utils/date_utils"
 	"github.com/m90trash/bookstore_users-api/utils/errors"
 )
@@ -9,6 +10,7 @@ import (
 var repo = make(map[int64]*User)
 
 func (u *User) Get() *errors.RestError {
+	users_db.Client.Ping()
 	ur := repo[u.Id]
 
 	if ur == nil {
