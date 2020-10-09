@@ -39,11 +39,13 @@ func GetUser(c *gin.Context) {
 	if userErr != nil {
 		err := errors.NewBadRequestError("user_id invalid")
 		c.JSON(err.Status, err)
+		return
 	}
 
 	repoUser, repoError := services.GetUser(userId)
 	if repoError != nil {
 		c.JSON(repoError.Status, repoError)
+		return
 	}
 
 	c.JSON(http.StatusOK, repoUser)

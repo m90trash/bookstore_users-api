@@ -2,6 +2,7 @@ package users
 
 import (
 	"fmt"
+	"github.com/m90trash/bookstore_users-api/utils/date_utils"
 	"github.com/m90trash/bookstore_users-api/utils/errors"
 )
 
@@ -28,6 +29,8 @@ func (u *User) Save() *errors.RestError {
 	if repo[u.Id] != nil {
 		return errors.NewBadRequestError(fmt.Sprintf("id %d jau yra", u.Id))
 	}
+
+	u.CreateDate = date_utils.GetNowString()
 
 	repo[u.Id] = u
 
